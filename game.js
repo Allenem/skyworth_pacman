@@ -29,7 +29,7 @@ function Game(id,params){
     var _ = this;
     var settings = {
         width:1150,						        //画布宽度
-        height:500						        //画布高度
+        height:450						        //画布高度
     };
     Object.assign(_,settings,params);           //将所有可枚举属性的值从2个源对象复制到目标对象，并返回目标对象
     var $canvas = document.getElementById(id);
@@ -353,7 +353,29 @@ function Game(id,params){
             case 7:eatghost.play();break;
         };
     };
-
+    //点击按钮
+    Stage.prototype.buttonsclick = function(event,Stage) {
+        var but1 = document.getElementById("buton1");
+        var but2 = document.getElementById("buton2");
+        var but3 = document.getElementById("buton3");
+        var but4 = document.getElementById("buton4");
+        var but5 = document.getElementById("buton5");
+        but1.onclick = function() {
+            event.control = {orientation:3};
+        }
+        but2.onclick = function() {
+            event.control = {orientation:2};
+        }
+        but3.onclick = function() {
+            event.control = {orientation:1};
+        }
+        but4.onclick = function() {
+            event.control = {orientation:0};
+        }
+        but5.onclick = function() {
+                Stage.status = Stage.status==2?1:2;    
+        }
+    };
     //动画开始
     this.start = function() {
         var f = 0;		//帧数计算
@@ -534,7 +556,7 @@ function Game(id,params){
                 context.fillText('© Allenem',this.x,this.y);
             },
         });
-        //事件绑定
+        //回车空格事件绑定
         stage.bind('keydown',function(e){
             switch(e.keyCode){
                 case 13:  //Enter
@@ -544,9 +566,14 @@ function Game(id,params){
                 break;
             }
         });
+        stage.bind('mousedown',function(e){
+            $("button#buton6").mousedown(function(){
+                game.nextStage();
+                stage.musicplay(0);
+            });
+        });
     })();
     var beans;  //下一场景要用来判断，故设为全局变量
-
     //游戏主程序
     (function(){
         var stage,map,player,times;
@@ -690,7 +717,7 @@ function Game(id,params){
         //得分
         stage.createItem({
             x:10,
-            y:430,
+            y:400,
             draw:function(context){
                 context.font = 'bold 28px Helvetica';
                 context.textAlign = 'left';
@@ -707,7 +734,7 @@ function Game(id,params){
         //状态文字
         stage.createItem({
             x:200,
-            y:430,
+            y:400,
             frames:25,
             draw:function(context){
                 if(stage.status==2&&this.times%2){
@@ -722,7 +749,7 @@ function Game(id,params){
         //生命值
         stage.createItem({
             x:400,
-            y:410,
+            y:380,
             width:15,
             height:15,
             frames:2,
@@ -979,6 +1006,8 @@ function Game(id,params){
                 context.fill();
             }
         });
+        //点击按钮
+        stage.buttonsclick(player,stage);
         //事件绑定
         stage.bind('keydown',function(e){
             switch(e.keyCode){
@@ -1011,7 +1040,7 @@ function Game(id,params){
         //游戏结束
         stage.createItem({
             x:game.width/2,
-            y:game.height*.4,
+            y:game.height*.3,
             draw:function(context){
                 context.fillStyle = '#FFF';
                 context.font = 'bold 48px Helvetica';
@@ -1027,7 +1056,7 @@ function Game(id,params){
         //记分
         stage.createItem({
             x:game.width/2,
-            y:game.height*.6,
+            y:game.height*.5,
             draw:function(context){
                 context.fillStyle = '#FFF';
                 context.font = '20px Helvetica';
@@ -1036,6 +1065,18 @@ function Game(id,params){
                 context.fillText('FINAL SCORE: '+(_SCORE+50*Math.max(_LIFE-1,0)),this.x,this.y);
             }
         });
+        //招新宣传文字
+        stage.createItem({
+            x:game.width/2,
+            y:game.height*.7,
+            draw:function(context){
+                context.fillStyle = '#FF0';
+                context.font = 'bold 30px Helvetica';
+                context.textAlign = 'center';
+                context.textBaseline = 'middle';
+                context.fillText('ヾ(◍°∇°◍)ﾉﾞ欢迎加入创维俱乐部ღ',this.x,this.y);
+            }            
+        })
         //事件绑定,重新开始
         stage.bind('keydown',function(e){
             switch(e.keyCode){
