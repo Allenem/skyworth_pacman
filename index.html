@@ -3,28 +3,56 @@
 <meta charset="utf8">
 <title>Skyworth-Pacman</title>
 <link rel="shortcut icon" href="favicon.png">
+<script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
 <style>
 	body{background-color: #292929}
 	*{padding:0;margin:0;}
-	h1{color:#FF6;text-align:center;margin:20px;font-family:Times New Roman;font-size:40px;text-shadow: 5px 5px 5px #FF0000;}
+	h1{color:#FF6;text-align:center;margin:15px 0;font-family:Times New Roman;font-size:40px;text-shadow: 5px 5px 5px #FF0000;}
 	.wrapper{width:1150px;margin:0 auto;line-height:36px;text-align:center;color:#999;}
 	canvas{display:block;background: #000;}
-	#footer ul{list-style-type:none;padding:0;text-align:center;}
-    #footer a{display:inline-block;color:#666;font-size:10pt;font-family:monospace;padding:5px}
+	div>a{text-align:center;font:bold 30px 华文彩云,楷体;color:skyblue;text-decoration-line:none;line-height:60px;}
+	#footer ul{list-style-type:none;padding:0;text-align:center;line-height:15px;}
+    #footer a{display:inline-block;color:#666;font-size:10pt;font-family:monospace;padding:5px 0;}
     #footer a:hover{color:#AAA;text-decoration:none;background:#333}
+	div#pointright{font-size:50px;position:relative;float:left;line-height:70px;animation:mymove1 1s infinite;-webkit-animation:mymove1 1s infinite; /* Safari and Chrome */}
+	@keyframes mymove1{0% {left:250px;} 50% {left:300px} 100% {left:250px;}}
+	@-webkit-keyframes mymove1{0% {left:250px;} 50% {left:300px} 100% {left:250px;}} /* Safari and Chrome */
+	div#pointleft{font-size:50px;position:relative;float:right;line-height:70px;animation:mymove2 1s infinite;-webkit-animation:mymove2 1s infinite;}
+	@keyframes mymove2{0% {right:250px;} 50% {right:300px} 100% {right:250px;}}
+	@-webkit-keyframes mymove2{0% {right:250px;} 50% {right:300px} 100% {right:250px;}}
+	.button{position: relative;float:right;top:-60px;right:0px;}
+	.button button{font:bold 15px Helvetica;width: 98px;height:62px;line-height:-36px;border-radius:15px;background:#2fc550;opacity: 1.5;}
+    .button button:hover{font:bold 20px Helvetica;color:white;transition-duration: 0.2s;cursor:pointer;}
+    .button button:active{background:#CC3333;}
+    .button1{position: relative;right:-205px;top:-80px;}
+    .button2{float:left;position: relative;left:-500px;top:-80px;} 
+    .button3{float:left;position: relative;left:-598px;top:-10px;}
 </style>
 </head>
-<h1>Skyworth-Pacman</h1>
 <div class="wrapper">
-	<canvas id="canvas" width="1150" height="500" title="Celebrate Skyworth's 30th Birthday & skyworthClubScut's 5th Birthday!">不支持画布</canvas>
-	<p>按【空格】或【回车】暂停或继续</p>		
-</div>
-<div id="footer">
+	<h1>Skyworth-Pacman</h1>
+	<canvas id="canvas" width="1150" height="450" title="Celebrate Skyworth's 30th Birthday & skyworthClubScut's 5th Birthday!">不支持画布</canvas>
+	<p id="link">
+		<div id="pointright">☞☞☞</div>
+		<a href="https://mp.weixin.qq.com/s/oxQITajpb_rVDOI29gxr1Q" target="_blank">点我看招新推送哦</a>
+		<div id="pointleft">☜☜☜</div>
+	</p>
+	<p id="next">按<b style="color:#FFF;">【空格】</b>或<b style="color:#FFF;">【回车】</b>暂停或继续</p>
+	<div id="footer">
     <ul>
-      <li><a href="https://github.com/Allenem/skyworth_pacman" target="_blank"><svg version="1.1" width="14" height="14" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg><span> GitHub Allenem/skyworth_pacman</span></a></li>
-      <li><a href="http://www.skyworth.com/" target="_blank">&copy; 1988-2018, Skyworth</a></li>
-      <li><a href="https://skyworthclubscut.kuaizhan.com/" target="_blank">&copy; 2013-2018, skyworthclubscut</a></li>
+		<li><a href="https://github.com/Allenem/skyworth_pacman" target="_blank"><svg version="1.1" width="14" height="14" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg><span> GitHub Allenem/skyworth_pacman</span></a></li>
+		<li><a href="http://www.skyworth.com/" target="_blank">&copy; 1988-2018, Skyworth</a></li>
+		<li><a href="https://skyworthclubscut.kuaizhan.com/" target="_blank">&copy; 2013-2018, skyworthclubscut</a></li>
     </ul>
+	</div>
+	<div class="button">
+		<button class="button1" id="buton1">↑</button>
+		<button id="buton2">←</button>
+		<button id="buton3">↓</button>
+		<button id="buton4">→</button>
+		<button class="button2" id="buton6">start/end</button>
+		<button class="button3" id="buton5">|| / ▶</button>	
+	</div>	
 </div>
 <embed  src="music/start.mp3"   id="staMusic"  controls   hidden="true" autostart="true"/>
 <audio  src="music/eat.mp3"   id="eatMusic"  controls   hidden="true"></audio>
