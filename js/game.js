@@ -472,7 +472,7 @@
             location:map,
             coord:{x:9.5,y:11},
             orientation:0,
-            speed:3,
+            speed:2,
             frames:20,
             update:function(){
                 var coord = this.coord;
