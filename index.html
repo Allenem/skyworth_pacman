@@ -5,7 +5,6 @@
 <link rel="shortcut icon" href="favicon.png">
 <script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
 <style>
-	/*html{height:713px;}*/
 	body{background-color: #292929}
 	*{padding:0;margin:0;}
 	h1{color:#FF6;text-align:center;margin:15px 0;font-family:Times New Roman;font-size:40px;text-shadow: 5px 5px 5px #FF0000;}
@@ -21,13 +20,13 @@
 	div#pointleft{font-size:50px;position:relative;float:right;line-height:70px;animation:mymove2 1s infinite;-webkit-animation:mymove2 1s infinite;}
 	@keyframes mymove2{0% {right:250px;} 50% {right:300px} 100% {right:250px;}}
 	@-webkit-keyframes mymove2{0% {right:250px;} 50% {right:300px} 100% {right:250px;}}
-	.button{width:450px;height:300px;position: relative;float:right;top:-60px;right:0px;}
-	.button button{font:bold 15px Helvetica;width: 98px;height:62px;line-height:-36px;border-radius:15px;background:#2fc550;opacity: 1.5;}
-    .button button:hover{font:bold 20px Helvetica;color:white;transition-duration: 0.2s;cursor:pointer;}
+	.button{width:1300px;height:500px;position: relative;float:left;top:230px;left:-220px;}
+	.button button{font:bold 25px Helvetica;width: 300px;height:200px;line-height:-36px;border-radius:15px;background:#2fc550;opacity: 1.5;}
+    .button button:hover{font:bold 50px Helvetica;color:white;transition-duration: 0.2s;cursor:pointer;}
     .button button:active{background:#CC3333;}
-    .button1{position: relative;right:-205px;top:-80px;}
-    .button2{float:left;position: relative;left:-650px;top:-130px;} 
-    .button3{float:left;position: relative;left:-748px;top:-60px;}
+    .button1{position: relative;left:610px;top:-210px;}
+    /*.button2{float:left;position: relative;left:-150px;top:-400px;}*/ 
+    .button3{float:left;position: relative;left:652px;top:10px;}
 </style>
 </head>
 <div class="wrapper">
@@ -49,10 +48,10 @@
 	<div class="button">
 		<button class="button1" id="buton1">↑</button>
 		<button id="buton2">←</button>
-		<button id="buton3">↓</button>
-		<button id="buton4">→</button>
-		<button class="button2" id="buton6">start/end</button>
-		<button class="button3" id="buton5">|| / ▶</button>	
+		<button id="buton5">|| / ▶</button>
+		<button id="buton4">→</button>		
+		<button class="button3" id="buton3">↓</button>
+		<!-- <button class="button2" id="buton6">start</button> -->
 	</div>	
 </div>
 <embed  src="music/start.mp3"   id="staMusic"  controls   hidden="true" autostart="true"/>
@@ -62,6 +61,7 @@
 <audio  src="music/death.mp3"   id="dieMusic"  controls   hidden="true"></audio>
 <audio  src="music/eatgoods.mp3"   id="goodsMusic"  controls   hidden="true"></audio>
 <audio  src="music/eatghost.mp3"   id="ghostMusic"  controls   hidden="true"></audio>
-<script src="game.js"></script>
+<script src="js/engine.js"></script>
+<script src="js/game.js"></script>
 </body>
 </html>
