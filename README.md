@@ -11,3 +11,4 @@
 * 7.You can press pause button,space key or enter key to pause or continue.
 * 8.If you have eaten all of the beans,you will win.But if not,you will lose.
 * 9.You can browse our recruit new push,github repositories,skyworth website and our club websit by click the link.
+You can play it here:https://Allenem.github.io/skyworth_pacman .
